@@ -40,7 +40,6 @@ dependencies {
     compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:1.0.0'
     compile 'com.jakewharton.rxbinding:rxbinding-design:1.0.0'
     compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:1.0.0'
-
     compile 'com.trello:rxlifecycle:1.0'
     compile 'com.trello:rxlifecycle-android:1.0'
     compile 'com.trello:rxlifecycle-components:1.0'
