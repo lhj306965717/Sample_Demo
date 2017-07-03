@@ -2,8 +2,9 @@ package com.lhj.sample;
 
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
-import io.rx_cache2.LifeCache;
+import io.rx_cache.LifeCache;
+import rx.Observable;
+
 
 /**
  * Created by LiaoHongjie on 2017/7/3.
