@@ -1,6 +1,7 @@
 package com.com.lhj.sample.presenter;
 
-import com.com.lhj.sample.test.Test_2;
+import com.lhj.sample.presenter.MainActivityPresenter;
+import com.lhj.sample.test.Test_2;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class MainActivityPresenterTest {
     @Before
     public void setUp() throws Exception {
 
-        mPresenter = new MainActivityPresenter(new com.com.lhj.sample.test.Test(), new Test_2());
+        mPresenter = new MainActivityPresenter(new com.lhj.sample.test.Test(), new Test_2());
     }
 
     @Test

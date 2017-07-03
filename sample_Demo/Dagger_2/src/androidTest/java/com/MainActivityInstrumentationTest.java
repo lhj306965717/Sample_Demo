@@ -5,7 +5,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
 import com.com.lhj.sample.R;
-import com.com.lhj.sample.activity.MainActivity;
+import com.lhj.sample.activity.MainActivity;
 
 import org.junit.Rule;
 import org.junit.Test;

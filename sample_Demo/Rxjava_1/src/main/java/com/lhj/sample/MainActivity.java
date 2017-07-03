@@ -40,26 +40,62 @@ public class MainActivity extends AppCompatActivity {
         // int_6();
 
         // 防抖动，
-        init_7();
+        // init_7();
 
         init_8();
     }
 
     private void init_8() {
+        // 一种空的写法
 
-       /* new Subscriber<>() {
-            @Override
-            public void onCompleted() {
-                Log.e("TAG", "Action1 线程：" + Thread.currentThread().getName());
-                Log.e("TAG", "Subscriber --> onCompleted..... ");
-            }
-            @Override
-            public void onError(Throwable e) {}
-            @Override
-            public void onNext(Teacher teacher) {
-                Log.e("TAG", "onNext数据：" + teacher.name);
-            }
-        }*/
+        Observable.empty()
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(new Action1<Object>() {
+                    @Override
+                    public void call(Object o) {
+
+                        //  empty 就不会调用 doOnNext 中的call，会直接调用 doOnCompleted方法
+
+                        Log.e("TAG", " doOnNext... : " + o.toString());
+                    }
+                })
+                .doOnCompleted(new Action0() {
+                    @Override
+                    public void call() {
+                        Log.e("TAG", " doOnCompleted... : ");
+                    }
+                })
+                .doOnError(new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Log.e("TAG", " doOnError... : ");
+                    }
+                })
+                .subscribe();
+
+        Observable.just("廖红杰")
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .doOnNext(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        Log.e("TAG", "doOnNext 线程：" + Thread.currentThread().getName());
+                        Log.e("TAG", "doOnNext : " + s);
+                    }
+                })
+                .doOnCompleted(new Action0() {
+                    @Override
+                    public void call() {
+                        Log.e("TAG", "doOnCompleted....");
+                    }
+                })
+                .doOnError(new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Log.e("TAG", "doOnError....");
+                    }
+                }).subscribe();
+
     }
 
     private void init_7() {
@@ -352,9 +388,8 @@ public class MainActivity extends AppCompatActivity {
 
                 return "哈哈哈";
             }
-        })
-                .subscribe(subscriber)
-                .unsubscribe(); // 这里调用了以后，相当于会直接取消 数据接受源，所以一般是在执行完任务后再取消
+        }).subscribe(subscriber);
+                //.unsubscribe(); // 这里调用了以后，相当于会直接取消 数据接受源，所以一般是在执行完任务后再取消
 
         // 普通的都是主线程在做
 

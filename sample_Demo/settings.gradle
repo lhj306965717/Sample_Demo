@@ -1,1 +1,1 @@
-include ':Dagger_2', ':Rxjava_1', ':Rxjava_2'
+include ':Dagger_2', ':Rxjava_1', ':Rxjava_2', ':RxView', ':Greendao', ':RxCache', ':OkHttp'
