@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-
 import io.victoralbertos.jolyglot.JolyglotGenerics;
 import io.victoralbertos.jolyglot.Types;
+
 
 /**
  * Created by LiaoHongjie on 2017/7/3.
@@ -38,7 +38,6 @@ public class GsonSpeaker implements JolyglotGenerics {
     @Override
     public <T> T fromJson(File file, Type typeOfT) throws RuntimeException {
         BufferedReader reader = null;
-
         try {
             reader = new BufferedReader(new FileReader(file.getAbsoluteFile()));
             T object =  mGson.fromJson(reader, typeOfT);

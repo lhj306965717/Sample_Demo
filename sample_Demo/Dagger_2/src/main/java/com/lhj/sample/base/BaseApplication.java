@@ -3,7 +3,7 @@ package com.lhj.sample.base;
 import android.app.Application;
 
 import com.lhj.sample.module.ApplicationComponet;
-import com.com.lhj.sample.module.DaggerBaseComponet;
+import com.lhj.sample.module.DaggerApplicationComponet;
 import com.lhj.sample.presenter.ApplicationPresenter;
 
 import javax.inject.Inject;
@@ -22,7 +22,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        mTestComponet = DaggerBaseComponet.builder().build();
+        mTestComponet = DaggerApplicationComponet.builder().build();
         mTestComponet.inject(this);
     }
 

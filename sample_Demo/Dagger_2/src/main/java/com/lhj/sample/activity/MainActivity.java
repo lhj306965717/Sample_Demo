@@ -8,11 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.lhj.sample.base.BaseApplication;
 import com.com.lhj.sample.R;
 import com.lhj.sample.base.BaseActivity;
+import com.lhj.sample.base.BaseApplication;
 import com.lhj.sample.constrct.MainActivityConstrct;
-import com.com.lhj.sample.module.DaggerMainActivityComponent;
+import com.lhj.sample.module.DaggerMainActivityComponent;
 import com.lhj.sample.module.MainActivityComponent;
 import com.lhj.sample.module.MainActivityModule;
 import com.lhj.sample.presenter.MainActivityPresenter;
@@ -36,7 +36,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
         // 以嵌套的方式存在
         MainActivityComponent build = DaggerMainActivityComponent
                 .builder()
-                .baseComponet(baseApplication.getTestComponet())
+                .applicationComponet(baseApplication.getTestComponet())
                 .mainActivityModule(new MainActivityModule())
                 .build();
 
