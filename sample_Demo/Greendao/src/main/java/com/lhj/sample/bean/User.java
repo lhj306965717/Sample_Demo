@@ -17,33 +17,39 @@ import org.greenrobot.greendao.annotation.Id;
 
 @Entity
 public class User {
-    @Id
-    private long id; // 这个是主键ID
+    @Id(autoincrement = true)
+    private Long id; // 这个是主键ID(自增id)   // 注意：这个Id类型一定要是 Long 类型，不能是long，否则坑爹
     private String name;
-
-    @Generated(hash = 586692638) // 这个数据一定要是long类型的，否则会生成失败
-    public User() {
-    }
-
-    @Generated(hash = 1144922831)
-    public User(long id, String name) {
+    private int age;
+    @Generated(hash = 1309193360)
+    public User(Long id, String name, int age) {
         this.id = id;
         this.name = name;
+        this.age = age;
     }
-
-    public long getId() {
-        return id;
+    @Generated(hash = 586692638)
+    public User() {
     }
-
+    public Long getId() {
+        return this.id;
+    }
     public void setId(long id) {
         this.id = id;
     }
-
     public String getName() {
-        return name;
+        return this.name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
+    public int getAge() {
+        return this.age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

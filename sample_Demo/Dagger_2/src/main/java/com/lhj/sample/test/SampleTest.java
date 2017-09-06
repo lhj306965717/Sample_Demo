@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class SampleTest {
 
-    public void SampleTest(){
+    public SampleTest(){
         Log.e("TAG", "SampleTest....被创建");
     }
 

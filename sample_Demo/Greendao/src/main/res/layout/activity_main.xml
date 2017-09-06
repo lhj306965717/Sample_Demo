@@ -13,18 +13,19 @@
         android:textColor="@android:color/black" />
 
     <EditText
-        android:id="@+id/etId"
+        android:id="@+id/et_Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入用户id"
-        android:inputType="number"
+        android:hint="请输入姓名"
+        android:inputType="text"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/etName"
+        android:inputType="number"
+        android:id="@+id/et_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入用户名"
+        android:hint="请输入年龄"
         android:textSize="15sp" />
 
     <Button

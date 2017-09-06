@@ -36,17 +36,20 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
         // 以嵌套的方式存在
         MainActivityComponent build = DaggerMainActivityComponent
                 .builder()
-                .applicationComponet(baseApplication.getTestComponet())
+                .applicationComponet(baseApplication.getTestComponet()) // 两个model对象
                 .mainActivityModule(new MainActivityModule())
                 .build();
 
-        build .inject(this);
+        build.inject(this);
 
+        // 创建 Test 对象
         Test test = build.getTest();
         test.tt();
 
+        // 创建 Test_1对象
         Test_1 test_1 = build.getTest_1();
         test_1.ff_1();
+
         /*MainActivityComponent build = DaggerComponentActivity
                 .builder()
                 .testActivityModule(new MainActivityModule())// 注意：这里的对象一定要创建，因为需要读取这个Module对象中被 @Provides 注解的方法
