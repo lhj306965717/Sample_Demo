@@ -2,6 +2,8 @@ package com.lhj.sample.test;
 
 import android.util.Log;
 
+import javax.inject.Inject;
+
 /**
  * Created by LiaoHongjie on 2017/6/30.
  */

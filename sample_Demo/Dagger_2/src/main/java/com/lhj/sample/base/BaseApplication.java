@@ -24,7 +24,10 @@ public class BaseApplication extends Application {
         super.onCreate();
 
         // 这样写  ApplicationPresenter 是并没有被注解上去的
-        mTestComponet = DaggerApplicationComponet.builder().build();
+        DaggerApplicationComponet
+                .builder()
+//                .applicationModule()  // 如果没有添加，mFPresenter无法注入上去
+                .build();
 
         mTestComponet.inject(this);
 

@@ -25,12 +25,10 @@ public class MainActivityPresenter implements MainActivityConstrct.PresenterActi
 
     // 这两个方法会按照标注顺序依次调用，会在构造方法完成，并创建了次对象后
     @Inject
-    public int f(){
+    public void f(){
 
-        mTest_1.ff_1();
+        //mTest_1.ff_1();
 
-        Log.e("TAG", "f.....");
-
-        return 1;
+        Log.e("TAG", "f.....f");
     }
 }

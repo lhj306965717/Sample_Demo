@@ -17,7 +17,7 @@ import org.greenrobot.greendao.annotation.Id;
 
 @Entity
 public class User {
-    @Id(autoincrement = true)
+    @Id(autoincrement = false)
     private Long id; // 这个是主键ID(自增id)   // 注意：这个Id类型一定要是 Long 类型，不能是long，否则坑爹
     private String name;
     private int age;

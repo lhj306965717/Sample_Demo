@@ -16,8 +16,6 @@ import com.lhj.sample.module.DaggerMainActivityComponent;
 import com.lhj.sample.module.MainActivityComponent;
 import com.lhj.sample.module.MainActivityModule;
 import com.lhj.sample.presenter.MainActivityPresenter;
-import com.lhj.sample.test.Test;
-import com.lhj.sample.test.Test_1;
 
 // 这里的泛型不能用接口，必须要用实际的类型
 public class MainActivity extends BaseActivity<MainActivityPresenter> implements MainActivityConstrct.ViewActivity {
@@ -43,12 +41,15 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
         build.inject(this);
 
         // 创建 Test 对象
-        Test test = build.getTest();
-        test.tt();
+//        Test test = build.getTest();
+//        test.tt();
+//
+//        // 创建 Test_1对象
+//        Test_1 test_1 = build.getTest_1();
+//        test_1.ff_1();
 
-        // 创建 Test_1对象
-        Test_1 test_1 = build.getTest_1();
-        test_1.ff_1();
+//        SuperTest superTest = build.getSuperTest();
+//        superTest.superFF();
 
         /*MainActivityComponent build = DaggerComponentActivity
                 .builder()

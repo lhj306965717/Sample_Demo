@@ -2,10 +2,10 @@ package com.lhj.sample.module;
 
 import android.util.Log;
 
-import com.lhj.sample.scope.ActivityScoped;
 import com.lhj.sample.test.Test;
 import com.lhj.sample.test.Test_1;
 import com.lhj.sample.test.Test_2;
+import com.lhj.sample.scope.ActivityScoped;
 
 import dagger.Module;
 import dagger.Provides;
