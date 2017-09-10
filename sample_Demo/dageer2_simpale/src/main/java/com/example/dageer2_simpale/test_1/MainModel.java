@@ -1,6 +1,4 @@
-package com.example.dageer2_simpale;
-
-import javax.inject.Singleton;
+package com.example.dageer2_simpale.test_1;
 
 import dagger.Module;
 import dagger.Provides;
@@ -12,9 +10,10 @@ import dagger.Provides;
 @Module
 public class MainModel {
 
-    @Singleton
+//    @Singleton
     @Provides
     public Test provideTest(Test_1 test_1){
         return new Test(test_1);
     }
+
 }

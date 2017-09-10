@@ -1,4 +1,4 @@
-package com.example.dageer2_simpale;
+package com.example.dageer2_simpale.test_1;
 
 import android.util.Log;
 

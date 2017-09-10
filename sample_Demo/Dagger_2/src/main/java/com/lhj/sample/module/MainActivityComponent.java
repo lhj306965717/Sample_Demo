@@ -20,7 +20,7 @@ import dagger.Component;
  * <p>
  *
  * 注意：
- * @Singleton也是一个自定义@Scope，它的作用就像上面说的一样。 但由于它是Dagger2中默认定义的，所以它比我们自定义Scope对了一个功能，
+ * @Singleton也是一个自定义@Scope，它的作用就像上面说的一样。 但由于它是Dagger2中默认定义的，所以它比我们自定义Scope多了一个功能，
  * 就是编译检测，防止我们不规范的使用Scope注解，仅此而已。
  *
  *
