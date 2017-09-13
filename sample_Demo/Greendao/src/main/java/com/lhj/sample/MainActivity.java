@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                user.setId(1111);
 //                user.setName("草泥马");
 //              //  user.setAge(100);
+
+//                mUserDao.refresh(); // 通过 refresh来更新数据库
 //
 
                 String sql = "update "+ mUserDao.getTablename() + " set NAME = " + "\"草泥马\"";

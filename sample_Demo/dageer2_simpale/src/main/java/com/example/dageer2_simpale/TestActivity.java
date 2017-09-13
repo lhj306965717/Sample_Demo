@@ -7,4 +7,6 @@ import android.app.Activity;
  */
 
 public class TestActivity extends Activity {
+
+    // 只用做测试，
 }
