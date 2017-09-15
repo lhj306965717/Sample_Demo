@@ -1,13 +1,9 @@
-package com.lhj.sample.base;
+package com.lhj.retrofit2.base;
 
 import android.app.Application;
 
-import com.franmontiel.persistentcookiejar.ClearableCookieJar;
-import com.franmontiel.persistentcookiejar.PersistentCookieJar;
-import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
-import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
-import com.lhj.sample.http.Https;
-import com.lhj.sample.interceptor.RequestInterceptor;
+import com.lhj.retrofit2.http.HttpURL;
+import com.lhj.retrofit2.interceptor.RequestInterceptor;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -17,6 +13,9 @@ import javax.net.ssl.SSLSession;
 
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by liaohongjie on 2017/9/12.
@@ -24,7 +23,7 @@ import okhttp3.OkHttpClient;
 
 public class BaseApplication extends Application {
 
-    private static OkHttpClient mOkHttpClient;
+    private static Retrofit mRetrofit;
 
     @Override
     public void onCreate() {
@@ -38,18 +37,13 @@ public class BaseApplication extends Application {
         File cache = getExternalCacheDir();
         int cacheSize = 10 * 1024 * 1024;
 
-        ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(getApplicationContext()));
-
-        Https.SSLParams sslParams = Https.getSslSocketFactory(null, null, null);
-
-        mOkHttpClient = new OkHttpClient
+        OkHttpClient okHttpClient = new OkHttpClient
                 .Builder()
                 .connectTimeout(15, TimeUnit.SECONDS) // 连接超时时间，秒
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .pingInterval(15, TimeUnit.SECONDS) // webSocket 轮训隔间，单位秒
                 .cache(new Cache(cache.getAbsoluteFile(), cacheSize))
-                .cookieJar(cookieJar) // Cookies 持久化
                 .hostnameVerifier(new HostnameVerifier() {
                     @Override
                     public boolean verify(String s, SSLSession sslSession) {
@@ -58,13 +52,21 @@ public class BaseApplication extends Application {
                         return true;
                     }
                 })
-                .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager) // https配置
                 .addInterceptor(new RequestInterceptor()) // 设置拦截器
+                .build();
+
+        // 使用Scalars
+        mRetrofit = new Retrofit
+                .Builder()
+                .client(okHttpClient)
+                .addConverterFactory(ScalarsConverterFactory.create())// 使用Scalars
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(HttpURL.URL)
                 .build();
 
     }
 
-    public static OkHttpClient getOkHttpClient() {
-        return mOkHttpClient;
+    public static Retrofit getRetrofit() {
+        return mRetrofit;
     }
 }
