@@ -1,4 +1,4 @@
-include ':Dagger_2'
+include ':Dagger_2', ':observer'
 include ':Rxjava_1'
 include ':Rxjava_2'
 include ':RxView'

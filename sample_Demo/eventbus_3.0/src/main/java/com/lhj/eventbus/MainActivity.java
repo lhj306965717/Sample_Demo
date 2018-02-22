@@ -22,20 +22,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         initView();
 
         initEvent();
-
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true) // 处理粘性事件还需要设置
-    public void onMoonEvent(Message message){
+    public void onMoonEvent(Message message) {
 
-        if("Second".equals(message.getmTag())){
-
+        if ("Second".equals(message.getmTag())) {
             tv.setText(message.getMessage());
-
         }
     }
 
