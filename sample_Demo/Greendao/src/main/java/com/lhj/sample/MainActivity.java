@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 List<User> list = mUserDao.queryBuilder().list(); //查询所有数据
 
+                List<User> users = mUserDao.loadAll(); // 和queryBuilder　一样查询全部
+
                 Log.e("TAG", "总数量：" + list.size());
 
                 for (User u : list) {
@@ -97,11 +99,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                User user = new User();
 //                user.setId(1111);
 //                user.setName("草泥马");
-//              //  user.setAge(100);
-
+                // 通过api来操作
 //                mUserDao.refresh(); // 通过 refresh来更新数据库
-//
 
+
+
+                // 使用sql语句进行更新,
                 String sql = "update "+ mUserDao.getTablename() + " set NAME = " + "\"草泥马\"";
 
                 Log.e("TAG", "语句："+sql);
@@ -120,11 +123,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initDbHelp() {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "recluse.db", null);
 
-        db = helper.getWritableDatabase();
+        db = helper.getWritableDatabase(); // 执行sql语句是直接使用这个db是直接写入数据库的
 
         DaoMaster daoMaster = new DaoMaster(db);
 
-        daoSession = daoMaster.newSession();
+        daoSession = daoMaster.newSession(); // 执行sql语句并不会立即写入数据库，需要refresh来刷新
+
+//        daoseesion.clear()方法清除缓存 ，当数据库在内存中缓存后，需要重新数据库中的数据，就需要把缓存给清理掉
 
         mUserDao = daoSession.getUserDao();
 
